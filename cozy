@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Her Cozy Corner</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: #b03060;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin-top: 1.5rem;
+      font-size: 2.5rem;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 95%;
+      margin: 0 auto 3rem;
+    }
+
+    .card, .message, .affirmation, .breathing {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 1rem auto;
+      padding: 1.5rem 2rem;
+      max-width: 700px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #444;
+      text-align: left;
+    }
+
+    .message, .affirmation, .breathing {
+      text-align: center;
+      color: #444;
+    }
+
+    .message p {
+      margin-bottom: 1rem;
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #ff85c1;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      text-align: left;
+    }
+
+    #breathing-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #ffc0cb;
+      margin: 20px auto;
+      animation: breathe 6s infinite;
+    }
+
+    @keyframes breathe {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.5); }
+      100% { transform: scale(1); }
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 1.3rem;
+      color: #c71585;
+      animation: pulse 2s infinite;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+    }
+
+    a {
+      color: #b03060;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌸 Her Cozy Corner 🌸 </h1>
+
+  <div class="container">
+
+    <!-- Cozy Message -->
+    <div class="message">
+      <p>
+        Periods aren’t just about physical discomfort — they can be a storm of emotions, pain, and quiet strength. You carry all of this with such grace, and you deserve a moment to just be.
+      </p>
+      <p>
+        To every girl out there: You don’t need to be okay all the time. You don’t have to power through or wear a brave face. You're allowed to rest. You're allowed to pause. You're allowed to say, "this is hard" and still be proud of yourself.
+      </p>
+      <p>
+        This space is for your softness, your silence, your sighs. For your tears and your laughter. For your craving to be understood without having to explain.
+      </p>
+      <p>
+        Whether you’re lying in bed, curled up with cramps, feeling overwhelmed, or just seeking comfort — this space holds you gently. With no expectations. With no judgment.
+      </p>
+      <p>
+        Here’s to hot water bottles, cozy socks, chocolate bars, gentle words, and long naps. To being strong in your own quiet way. To being real and raw and entirely enough.
+      </p>
+      <p>
+        You are not alone. You are deeply cared for. You are valid — exactly as you are. 💗
+      </p>
+    </div>
+
+    <!-- Her Cozy Corner Cards -->
+    <div class="card">
+      <h2>💌 Daily Love Note</h2>
+      <p id="note" style="text-align:center;">Hey my little warrior, even the moon takes rest—so can you 💗</p>
+      <div style="text-align:center;">
+        <button onclick="newNote()">Shuffle</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🎁 Virtual Treat</h2>
+      <p id="treat" style="text-align:center;">Tap for a virtual treat 🎁</p>
+      <div style="text-align:center;">
+        <button onclick="newTreat()">Reveal Treat</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💬 Compliment Corner</h2>
+      <p id="compliment" style="text-align:center;">Click for a compliment 💬</p>
+      <div style="text-align:center;">
+        <button onclick="newCompliment()">Click Me</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🚫 Things You Don’t Have to Do</h2>
+      <ul>
+        <li>Be productive ❌</li>
+        <li>Talk to people ❌</li>
+        <li>Explain yourself ❌</li>
+      </ul>
+      <p style="font-size: 0.9rem; color: gray; text-align:center;">You're allowed to pause 💗</p>
+    </div>
+
+    <div class="card">
+      <h2>🌼 Gentle Reminders</h2>
+      <ul>
+        <li>💧 Drink warm water</li>
+        <li>🔥 Use a hot water bag</li>
+        <li>😌 Rest without guilt, please!</li>
+      </ul>
+    </div>
+
+    <!-- Affirmation Section -->
+    <div class="affirmation">
+      <h2>💖 Self-Love Affirmation</h2>
+      <p id="quote">You are enough. Always have been. Always will be.</p>
+      <button onclick="newQuote()">Show Another</button>
+    </div>
+
+    <!-- Breathing Section -->
+    <div class="breathing">
+      <h2>🌬️ Breathe With Me</h2>
+      <div id="breathing-circle"></div>
+      <p>Inhale... Hold... Exhale... You’re doing amazing.</p>
+    </div>
+
+    <!-- Helpful Resources -->
+    <div class="card" style="text-align:center;">
+      <h2>📚 Helpful Resources</h2>
+      <p>
+        <a href="https://www.menstrualhygieneday.org/" target="_blank" rel="noopener">Menstrual Hygiene Day</a><br/>
+        <a href="https://www.calm.com/" target="_blank" rel="noopener">Calm - Meditation & Sleep</a>
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer">✨ You’re safe. You’re loved. You’re held. You deserve rest, love, and all the softness in the world. ✨</div>
+
+  <script>
+    const loveNotes = [
+      "Hey my little warrior, even the moon takes rest—so can you 💗",
+      "You're not alone in this. I'm here, always 💞",
+      "Rest without guilt. You deserve peace, always 💤",
+      "Breathe. You're doing better than you think 💫",
+      "Some days need softness. Today is one of them 🌸",
+      "It’s okay to be gentle with yourself today 🤍",
+      "Let your heart be light, even if just for a moment ☁️",
+      "You’re allowed to pause and just exist 🌙",
+      "Feelings aren’t flaws. Let them flow 🌊",
+      "Even stars need darkness to shine 🌟",
+      "You carry so much beauty in your softness 💐",
+      "You’re not behind. You’re on your own path ⏳",
+      "Healing isn’t linear. Take your time 🌿",
+      "You don’t need to earn rest. You’re worthy already 🛌",
+      "Let this be a gentle day 💕",
+      "You’re held, even when you feel lost 🤲",
+      "It’s okay to not be okay—this too shall pass 💖",
+      "Your light doesn’t dim just because you’re tired 🌟",
+      "Take a breath. Everything will fall into place 🕊️",
+      "You are loved more than you know 💓",
+      "Let your body and soul rest in kindness 🌷",
+      "One soft step at a time, you’re moving forward 🪷",
+      "No pressure today. Just peace 🫧",
+      "Be proud of how far you've come, even if it's quiet 🦋",
+      "Cramps suck. But you? You shine anyway ☀️",
+      "May your heart feel light, even if your body feels heavy 💗",
+      "Kindness to yourself is medicine too 💊",
+      "The world can wait. This moment is yours 🧸",
+      "Hold space for your softness today 🌼",
+      "You’re magic, even on your messiest days ✨",
+      "Gentle reminder: you’re not a burden 💝",
+      "Let comfort be the only goal today 🎀",
+      "Feel it all, but don’t forget to breathe 🫁",
+      "You’re growing even when it doesn’t show 🌱",
+      "Choose comfort. Choose peace. Choose you 💕",
+      "Sometimes the bravest thing is to rest 💪",
+      "Love is quiet too. Like the warmth of your blanket 🧣",
+      "Inhale courage, exhale doubt 💨",
+      "Soft days are sacred too 🕯️",
+      "This tenderness is strength, not weakness 🧸",
+      "Gentle days are good days 💫",
+      "Even in stillness, you’re blooming 🌹",
+      "No need to explain your quiet. It’s valid 🫶",
+      "You deserve ease. Let it in 🌤️",
+      "Let this be a day of cozy things and soft hearts 💭",
+      "No rush. Just hush 💗",
+      "Speak to yourself like someone you love 💌",
+      "Honor your heart today. It’s been brave 🛡️",
+      "You’ve survived 100% of your worst days 🌈",
+      "You’re allowed to do less. And still be enough 💕",
+      "Wrap yourself in care. You’ve earned it 🌸",
+      "Rest is not laziness. It’s sacred 🌙",
+      "Just for today—be your own best friend 💖",
+      "The moon still glows even when she’s not whole 🌘"
+    ];
+
+    const treats = [
+      "🍫 Enjoy a virtual bar of dark chocolate—zero guilt",
+      "☕ Brew a warm cup of chamomile tea and breathe",
+      "📺 Pick your favorite comfort show and binge it freely",
+      "🧁 Order (or imagine) a warm chocolate lava cake",
+      "🛁 Take a long bath with candles and soft music",
+      "🧸 Hug your softest plushie and just relax",
+      "🍜 Treat yourself to hot ramen—spicy or soupy",
+      "🎧 Plug in calming music and close your eyes",
+      "🍓 Snack on fruit dipped in something sweet",
+      "🌧️ Let rain sounds lull you into peace",
+      "🧦 Put on your coziest socks and snuggle in",
+      "🛌 Give yourself permission to nap, no guilt",
+      "🍿 Watch a rom-com and laugh or cry freely",
+      "📚 Revisit a book that once made you feel warm",
+      "🎀 Rest your head and daydream for a bit",
+      "🍩 Savor something sugary and soft",
+      "🧃 Hydrate with something fruity and cold",
+      "💌 Write a love note to your future self",
+      "🔥 Put on a virtual fireplace and get cozy",
+      "🧘‍♀️ Do gentle stretching or deep breathing",
+      "🎨 Color something soothing—no rules, just flow",
+      "🍪 Eat a cookie slowly and enjoy every bite",
+      "🎂 Slice up something sweet just for you",
+      "💤 Take the day slow. You deserve to.",
+      "🧋 Sip your favorite tea or bubble drink",
+      "🥞 Stack pancakes and drizzle all the syrup",
+      "💻 Play a feel-good movie or series",
+      "💐 Scroll through photos of soft flowers",
+      "💆‍♀️ Give yourself a mini facial or massage",
+      "🧴 Rub in some nice-smelling lotion",
+      "🔮 Light a candle and stare into the glow",
+      "🍝 Eat something cheesy and comforting",
+      "🥤 Drink your go-to soda or iced drink",
+      "💝 Make a tiny comfort box with all your faves",
+      "📦 Unbox something you’ve been saving",
+      "🖼️ Scroll through calming aesthetic boards",
+      "🍜 Cook a simple cozy meal",
+      "💫 Close your eyes and imagine floating in space",
+      "🧄 Toast garlic bread and eat it slowly",
+      "🧚 Whisper kind words to your body",
+      "🌙 Make a soft night playlist for bedtime",
+      "🍋 Sip warm lemon water and pause",
+      "🎈 Decorate your space with something cute",
+      "🧁 Frost a cupcake, even if just in your head",
+      "🧤 Wrap yourself in your softest hoodie or blanket",
+      "🌸 Visualize a cherry blossom breeze",
+      "🍿 Recreate a movie night just for one",
+      "✨ Take an evening to do absolutely nothing",
+      "🛒 Buy one silly little thing you’ve been craving",
+      "🧼 Change into fresh pajamas and relax",
+      "🌼 Light incense or spray a calming scent",
+      "🫶 Give yourself a full permission slip: do less, feel more"
+    ];
+
+    const compliments = [
+      "Even cramps can’t cramp your sparkle ✨",
+      "Pain is temporary. You? Eternal beauty 💫",
+      "You shine brighter than any PMS cloud ☁️✨",
+      "Your strength is more magical than chocolate 🍫💖",
+      "Still glowing, even when you’re curling up 💡",
+      "Mood swings can't mess with your magnificence 💅",
+      "Even your tired eyes hold galaxies 🌌",
+      "You're a walking hug in human form 🤗",
+      "Your softness is your superpower 💗",
+      "Who needs roses when you bloom daily 🌹",
+      "Cozy, calm, and completely captivating 🛋️",
+      "You carry grace even in pain 🌙",
+      "Brave heart. Soft soul. Beautiful human 🌸",
+      "You look like comfort and feel like home 🏡",
+      "Still cute in chaos 💥💖",
+      "Messy bun, magic done 🪄",
+      "Your laugh > any painkiller 💊",
+      "Your glow doesn’t need a filter 🌟",
+      "Even in sweatpants, you slay 💃",
+      "You're poetry in motion—even when you're napping 💤",
+      "A little moody? Still a total cutie 🧸",
+      "Sore today, stunning always 💘",
+      "Cuddly chaos? Absolutely iconic 🐻",
+      "Emotional? More like emotionally extraordinary ✨",
+      "You’re fire and fairy dust all in one 🔥🧚‍♀️",
+      "Still glowing through the cramps 💡",
+      "Heart full of sunshine, even on stormy days 🌦️",
+      "Your aura radiates warmth, even in pain ☀️",
+      "You're pure magic, period 🪄",
+      "Still a queen, even off the throne 👑",
+      "Everything about you = serotonin 💗",
+      "Strong spine, soft heart 🫶",
+      "Delicate, not weak 🌷",
+      "Looking like a blessing, bleeding or not 💝",
+      "Soft girl energy. Supreme power 💅",
+      "Still an angel, even when grumpy 😇",
+      "Snuggle champion and mood-lifter 💞",
+      "Goddess mode: activated 💫",
+      "Comfy clothes + killer vibes 🎀",
+      "Hormonal? More like heavenly 🦋",
+      "Powerful and precious all at once 🌟",
+      "Storm inside, calm outside ☁️☀️",
+      "Cutest warrior in the room ⚔️💕",
+      "Still fabulous when everything hurts 💃",
+      "Soreness can’t dim your sparkle ✨",
+      "Wrapped in blankets, radiating grace 🧣",
+      "Cramps don’t stand a chance against your light 🌞",
+      "Sweetest soul with the fiercest heart ❤️‍🔥",
+      "Soft voice, strong soul 🎶",
+      "Tough days, timeless beauty ⏳💗",
+      "Pain fades. You glow forever ✨",
+      "You, my dear, are divine—even on Day 1 🌙"
+    ];
+
+    const quotes = [
+      "You are enough. Always have been. Always will be.",
+      "Your softness is your power.",
+      "You don't have to fix everything today.",
+      "You are allowed to be both a masterpiece and a work in progress.",
+      "You’re doing better than you think.",
+      "It's okay to rest. You deserve it.",
+      "You are worthy of love just by being you.",
+      "Your presence is a gift.",
+      "You are allowed to take up space.",
+      "You are not behind. You’re on your own path.",
+      "It’s okay to say no and protect your peace.",
+      "You are growing, even on days you feel still.",
+      "You bring light to the lives around you.",
+      "Your voice matters. Always.",
+      "You don’t have to shrink to be loved.",
+      "You are resilient and radiant.",
+      "Your feelings are valid.",
+      "You are doing the best you can, and that is enough.",
+      "It’s okay to take a break.",
+      "You deserve gentleness.",
+      "You can be proud of how far you've come.",
+      "You radiate beauty from within.",
+      "You are not too much. You are just right.",
+      "Self-love is your superpower.",
+      "You are allowed to change.",
+      "Your dreams are valid.",
+      "You deserve peace.",
+      "You don’t need to be perfect to be amazing.",
+      "You are allowed to feel and still be strong.",
+      "You carry strength in your softness.",
+      "You are becoming everything you’re meant to be.",
+      "You don’t owe anyone your energy.",
+      "You are a whole person.",
+      "You are not a burden. You are a blessing.",
+      "Your journey is sacred.",
+      "You deserve to be kind to yourself.",
+      "You glow differently when you believe in yourself.",
+      "You are beautiful, inside and out.",
+      "You are allowed to choose yourself.",
+      "You are not broken—you are becoming.",
+      "You are doing better than you know.",
+      "You can be both healing and thriving.",
+      "You are more than enough.",
+      "You are a light, even in your lowest moments.",
+      "You are the author of your own story.",
+      "Your worth is not tied to productivity.",
+      "You are worthy of joy and rest.",
+      "You are loved more than you know.",
+      "You are made of magic and resilience.",
+      "You can start fresh whenever you need to.",
+      "You have a beautiful heart.",
+      "You deserve love that feels like home."
+    ];
+    function newNote() {
+      document.getElementById('note').innerText = loveNotes[Math.floor(Math.random() * loveNotes.length)];
+    }
+
+    function newTreat() {
+      document.getElementById('treat').innerText = treats[Math.floor(Math.random() * treats.length)];
+    }
+
+    function newCompliment() {
+      document.getElementById('compliment').innerText = compliments[Math.floor(Math.random() * compliments.length)];
+    }
+
+    function newQuote() {
+      document.getElementById("quote").innerText = quotes[Math.floor(Math.random() * quotes.length)];
+    }
+  </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Her Cozy Corner</title>
+  <style>
+    /* Existing styles retained */
+    /* Add these new styles */
+    .mood-tracker, .journal, .reminder {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 1rem auto;
+      padding: 1.5rem 2rem;
+      max-width: 700px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #444;
+      text-align: left;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 0.5rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
+    input[type="time"] {
+      padding: 0.5rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      margin-right: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Existing content... -->
+
+  <!-- Mood Tracker -->
+  <div class="mood-tracker">
+    <h2>🌈 Mood Tracker</h2>
+    <label for="mood">How are you feeling today?</label>
+    <select id="mood">
+      <option value="">Select a mood</option>
+      <option value="Happy">😊 Happy</option>
+      <option value="Sad">😢 Sad</option>
+      <option value="Tired">😴 Tired</option>
+      <option value="Moody">😡 Moody</option>
+      <option value="Anxious">😰 Anxious</option>
+      <option value="Calm">😌 Calm</option>
+    </select>
+    <button onclick="saveMood()">Save Mood</button>
+    <p id="moodResult"></p>
+  </div>
+
+  <!-- Journal -->
+  <div class="journal">
+    <h2>📝 Journaling Space</h2>
+    <label for="journalEntry">Write your thoughts:</label>
+    <textarea id="journalEntry" placeholder="Dear me..."></textarea>
+    <button onclick="saveJournal()">Save Entry</button>
+    <p id="journalMessage"></p>
+  </div>
+
+  <!-- Reminder -->
+  <div class="reminder">
+    <h2>⏰ Set a Gentle Reminder</h2>
+    <label for="reminderTime">Pick a time:</label>
+    <input type="time" id="reminderTime"/>
+    <button onclick="setReminder()">Set Reminder</button>
+    <p id="reminderMessage"></p>
+  </div>
+
+  <script>
+    function saveMood() {
+      const mood = document.getElementById('mood').value;
+      const result = document.getElementById('moodResult');
+      if (mood) {
+        localStorage.setItem('mood', mood);
+        result.textContent = `Mood saved: ${mood}`;
+      } else {
+        result.textContent = 'Please select a mood.';
+      }
+    }
+
+    function saveJournal() {
+      const entry = document.getElementById('journalEntry').value.trim();
+      const message = document.getElementById('journalMessage');
+      if (entry) {
+        const date = new Date().toLocaleDateString();
+        localStorage.setItem(`journal-${date}`, entry);
+        message.textContent = 'Journal saved. Be proud of your thoughts 💗';
+      } else {
+        message.textContent = 'Your journal is empty.';
+      }
+    }
+
+    function setReminder() {
+      const time = document.getElementById('reminderTime').value;
+      const msg = document.getElementById('reminderMessage');
+      if (time) {
+        msg.textContent = `Reminder set for ${time}. We'll remind you (if you keep this tab open).`;
+        const now = new Date();
+        const [hours, minutes] = time.split(":");
+        const reminderTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), +hours, +minutes);
+        const delay = reminderTime.getTime() - now.getTime();
+        if (delay > 0) {
+          setTimeout(() => {
+            alert("Gentle reminder: take a breath, drink water, and be kind to yourself 💗");
+          }, delay);
+        }
+      } else {
+        msg.textContent = 'Please choose a time.';
+      }
+    }
+  </script>
+
+</body>
+</html>
